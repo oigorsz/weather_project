@@ -1,22 +1,23 @@
-import axios from "axios";
+import axios from 'axios';
 
-const apiKey = process.env.OPENWEATHER_KEY;
-const baseUrl = "https://api.openweathermap.org/data/2.5/weather"; // Endpoint atual do OpenWeather
+export async function getCurrentWeather(city: string) {
+  const apiKey = process.env.OPENWEATHER_KEY;
+  if (!apiKey) throw new Error('Chave de API não definida');
 
-export async function getWeather(city: string) {
   try {
-    const response = await axios.get(baseUrl, {
-      params: {
-        q: city,
-        appid: apiKey,
-        units: "metric", // celsius
-        lang: "pt_br",   // idioma português
-      },
-    });
-
-    return response.data;
-  } catch (error: any) {
-    console.error("Erro ao buscar dados da API:", error.message);
+    const response = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric&lang=pt_br`
+    );
+    const data = response.data;
+    return {
+      temp: data.main.temp,
+      description: data.weather[0].description,
+      icon: data.weather[0].icon,
+      humidity: data.main.humidity,
+      wind_speed: data.wind.speed
+    };
+  } catch (error) {
+    console.error('Erro ao buscar dados da API:', error);
     throw error;
   }
 }
