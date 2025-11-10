@@ -1,0 +1,111 @@
+TUTORIAL - COMO RODAR O PROJETO DE CLIMA (WEATHER APP)
+
+===================================================
+1. REQUISITOS INICIAIS
+===================================================
+
+Antes de rodar o projeto, certifique-se de ter instalado no seu computador:
+
+1. Node.js (versão 18 ou superior)
+   → Baixar em: https://nodejs.org/
+
+2. npm (gerenciador de pacotes do Node)
+   → É instalado automaticamente com o Node.js.
+
+3. Conta na OpenWeather
+   → Criar em: https://home.openweathermap.org/
+   → Após criar a conta, acesse “API Keys” e copie sua chave. 
+
+//Pode utilizar a chave
+OPENWEATHER_KEY=0565bd65834ef38169ab1ce2bfe1485d
+MONGO_URI=mongodb+srv://igormonteiro_db_user:29zR9CdW5Bhk7D2R@cluster0.aehhu7q.mongodb.net/
+PORT=3001
+
+
+4. (Opcional) Conta no MongoDB Atlas
+   → Caso deseje salvar dados de cidades e clima futuramente. (já estará na minha conta)
+   → Criar em: https://www.mongodb.com/atlas/database
+
+===================================================
+2. BAIXANDO O PROJETO
+===================================================
+
+Abra o terminal e execute os comandos abaixo:
+
+git clone <URL_DO_SEU_REPOSITORIO_GITHUB>
+cd weather_project
+
+===================================================
+3. INSTALANDO AS DEPENDÊNCIAS
+===================================================
+
+No terminal, dentro da pasta do projeto, execute:
+
+npm install
+
+Esse comando vai instalar todas as bibliotecas necessárias, incluindo:
+- axios
+- dotenv
+- ts-node
+- typescript
+
+===================================================
+4. CONFIGURANDO O ARQUIVO .env
+===================================================
+
+Crie um arquivo chamado `.env` na raiz do projeto e adicione o seguinte conteúdo:
+
+PORT=3001
+OPENWEATHER_KEY=SUA_CHAVE_DA_OPENWEATHER
+MONGO_URI=SEU_URI_MONGODB
+
+⚠️ IMPORTANTE:
+- Substitua “SUA_CHAVE_DA_OPENWEATHER” pela chave que você obteve no site da OpenWeather.
+- O campo MONGO_URI é opcional neste momento.
+
+===================================================
+5. EXECUTANDO O PROJETO
+===================================================
+
+Para rodar o backend e testar a busca de clima, digite no terminal:
+
+npx ts-node src/app.ts
+
+Se tudo estiver certo, o terminal mostrará algo assim:
+
+Clima em São Paulo:
+Temperatura: 24.5°C
+Condição: nublado
+
+===================================================
+6. PROBLEMAS COMUNS
+===================================================
+
+❌ Erro “Request failed with status code 401”
+➡ Verifique se a sua chave da OpenWeather está correta e ativa.
+
+❌ Erro “Cannot find module 'dotenv/config'”
+➡ Rode novamente: npm install dotenv
+
+❌ Erro “ts-node não encontrado”
+➡ Rode: npm install -D ts-node typescript
+
+===================================================
+7. PRÓXIMOS PASSOS
+===================================================
+
+- Implementar salvamento de cidades no MongoDB.
+- Adicionar interface gráfica (React ou mobile).
+- Mostrar previsão horária e diária.
+- Exibir umidade, vento e sensação térmica.
+- Criar alertas meteorológicos automáticos.
+- Adicionar suporte à geolocalização.
+
+===================================================
+8. SOBRE O PROJETO
+===================================================
+
+Este projeto serve como base para um aplicativo de clima completo, semelhante ao app de clima do iPhone. 
+Ele pode ser expandido com frontend, mapas meteorológicos e integração com banco de dados.
+
+Feito com ❤️ para fins educacionais e de desenvolvimento.
